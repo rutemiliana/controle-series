@@ -13,8 +13,8 @@ PHP v8.1.2
 
 
 # Anotações
-## Comando para setar a porta do servidor:
-### php artisan serve --host=0.0.0.0 --port=8000
+1. Comando para setar a porta do servidor:
+php artisan serve --host=0.0.0.0 --port=8000
 
 
  
