@@ -1,8 +1,9 @@
 {
     "private": true,
     "scripts": {
-        "dev": "mix",
-        "build": "vite build"
+        "dev": "vite",
+        "build": "vite build",
+        "mix": "mix"
     },
     "devDependencies": {
         "axios": "^1.1.2",

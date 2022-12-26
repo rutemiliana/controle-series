@@ -10,11 +10,9 @@ PHP v8.1.2
 5. npm install laravel-mix --save-dev
 6. npm install bootstrap
 7. create file webpack.mix.js
+8. update package.json
 
 
-# Anotações
-1. Comando para setar a porta do servidor:
-php artisan serve --host=0.0.0.0 --port=8000
 
 
  
