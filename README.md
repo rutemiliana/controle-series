@@ -8,9 +8,12 @@ PHP v8.1.2
 3. php artisan make:controller SeriesControlller --resource
 4. npm install
 5. npm install laravel-mix --save-dev
-6. npm install bootstrap
-7. create file webpack.mix.js
-8. update package.json
+6. create file webpack.mix.js
+7. update package.json
+8. npm install bootstrap
+9. update file webpack.mix.js
+10. npm run mix
+11. npm run mix 
 
 
 
