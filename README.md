@@ -14,7 +14,8 @@ PHP v8.1.2
 9. update file webpack.mix.js
 10. npm run mix
 11. npm run mix 
-
+12. php artisan make:migration create_series_table
+13. php artisan migrate
 
 
 
