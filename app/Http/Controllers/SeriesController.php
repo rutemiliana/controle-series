@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Serie;
 
 
 class SeriesController extends Controller
@@ -16,7 +17,7 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        $series = DB::select('select * from series');
+        $series = Serie::all();
         return view('series.index')->with('series', $series);
     }
 
@@ -40,11 +41,12 @@ class SeriesController extends Controller
     {
         $nomeSerie = $request->input('nome');
 
-       if (DB::insert('insert into series (name) values (?)', [$nomeSerie])){
+        $serie= new Serie();
+        $serie->name= $nomeSerie;
+        $serie->save();             
+   
         return redirect()->route('index');
-    } else {
-            echo 'FALHOU';
-       }
+    
     }
 
     /**
