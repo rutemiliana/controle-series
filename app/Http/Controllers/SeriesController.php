@@ -41,9 +41,13 @@ class SeriesController extends Controller
     {
         $nomeSerie = $request->input('nome');
 
-        $serie= new Serie();
-        $serie->name= $nomeSerie;
-        $serie->save();             
+        Serie::create([
+            'name' => $nomeSerie,
+        ]);      
+   
+        // $serie= new Serie();
+        // $serie->name= $nomeSerie;
+        // $serie->save();             
    
         return redirect()->route('index');
     
