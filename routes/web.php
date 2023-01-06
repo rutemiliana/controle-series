@@ -15,14 +15,16 @@ use App\Http\Controllers\SeriesController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/series');
 });
 
-Route::controller(SeriesController::class)->group(function () {
-    Route::get('/series', 'index')->name('index.serie');
-    Route::get('/series/create', 'create')->name('create.serie');
-    Route::post('/series/store', 'store')->name('store.serie');
-});
+Route::resource('/series', SeriesController::class);
+
+// Route::controller(SeriesController::class)->group(function () {
+//     Route::get('/series', 'index')->name('series.index');
+//     Route::get('/series/create', 'create')->name('series.create');
+//     Route::post('/series/store', 'store')->name('series.store');
+// });
 
 
 

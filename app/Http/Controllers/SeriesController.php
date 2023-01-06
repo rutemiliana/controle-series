@@ -49,7 +49,7 @@ class SeriesController extends Controller
         // $serie->name= $nomeSerie;
         // $serie->save();             
    
-        return redirect()->route('index.serie');
+        return redirect()->route('series.index');
     
     }
 
