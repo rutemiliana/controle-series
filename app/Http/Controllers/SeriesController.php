@@ -39,17 +39,17 @@ class SeriesController extends Controller
      */
     public function store(Request $request)
     {
-        $nomeSerie = $request->input('nome');
+        //$nomeSerie = $request->input('nome');
+        //dd($request->all())
 
-        Serie::create([
-            'name' => $nomeSerie,
-        ]);      
+        Serie::create($request->all()); 
+        //método create() com array associativa    
    
         // $serie= new Serie();
         // $serie->name= $nomeSerie;
         // $serie->save();             
    
-        return redirect()->route('index');
+        return redirect()->route('index.serie');
     
     }
 

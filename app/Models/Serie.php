@@ -9,6 +9,7 @@ class Serie extends Model
 {
     use HasFactory;
 
+    // especifica quais campos poderão participar da atribuição em massa
     protected $fillable = ['name'];
 
 }
