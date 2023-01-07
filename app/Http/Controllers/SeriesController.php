@@ -95,7 +95,10 @@ class SeriesController extends Controller
      */
     public function destroy(Request $request)
     {
+        //dd($request->route());
         Serie::destroy($request->series);
+        /* series é o ID da serie que segue o padrão de rota (Actions Handled By Resource Controller)
+        singular de series em inglês é series */
        //dd($request->series);
 
        return redirect()->route('series.index');
