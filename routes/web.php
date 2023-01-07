@@ -18,7 +18,8 @@ Route::get('/', function () {
     return redirect('/series');
 });
 
-Route::resource('/series', SeriesController::class);
+Route::resource('/series', SeriesController::class)
+    ->only(['index', 'create', 'store']);
 
 // Route::controller(SeriesController::class)->group(function () {
 //     Route::get('/series', 'index')->name('series.index');
@@ -26,5 +27,5 @@ Route::resource('/series', SeriesController::class);
 //     Route::post('/series/store', 'store')->name('series.store');
 // });
 
-
+Route::post('/series/destroy/{series}', [SeriesController::class, 'destroy'])->name('series.destroy');
 
