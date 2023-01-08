@@ -46,14 +46,14 @@ class SeriesController extends Controller
         //dd($request->all())
 
         $serie = Serie::create($request->all()); 
-        $request->session()->flash('mensagem.sucesso', "Série '{$serie->name}' adicionada com sucesso!");
         //método create() com array associativa    
    
         // $serie= new Serie();
         // $serie->name= $nomeSerie;
         // $serie->save();             
    
-        return redirect()->route('series.index');
+        return redirect()->route('series.index')
+            ->with('mensagem.sucesso', "Série '{$serie->name}' adicionada com sucesso!");
     
     }
 
@@ -74,9 +74,11 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Serie $series)
     {
-        //
+        //dd($series);
+       
+       return view('series.edit')->with('series', $series);
     }
 
     /**
@@ -86,9 +88,16 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Serie $series, Request $request)
     {
-        //
+        
+        //fill faz os filtros dos campos que podem ser alterados(definidos na model Serie)
+        $series->fill($request->all());
+        $series->update();
+
+
+        return redirect()->route('series.index')
+        ->with('mensagem.sucesso', "Série '{$series->name}' atualizada com sucesso!");
     }
 
     /**
@@ -97,18 +106,15 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Serie $series, Request $request)
+    //Serie se refere a model
+    public function destroy(Serie $series)
     {
         $series->delete();
         //dd($series);
         /* series é o ID da serie que segue o padrão de rota (Actions Handled By Resource Controller)
         singular de series em inglês é series */
-        //dd($request->series);
-        //dd($request->route());
 
-        $request->session()->flash('mensagem.sucesso', "Série '{$series->name}' removida com sucesso");
-
-
-       return redirect()->route('series.index');
+       return redirect()->route('series.index')
+            ->with('mensagem.sucesso', "Série '{$series->name}' removida com sucesso");
     }
 }
