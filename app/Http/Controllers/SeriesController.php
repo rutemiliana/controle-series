@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use App\Models\Serie;
 
@@ -15,10 +16,12 @@ class SeriesController extends Controller
      * @return \Illuminate\Http\Response
      * retorna um objeto do tipo Response com o corpo, status e cabeçalho
      */
-    public function index()
+    public function index(Request $request)
     {
-        $series = Serie::all();
-        return view('series.index')->with('series', $series);
+        $series = Serie::query()->orderBy('name')->get();
+        $mensagemSucesso = session('mensagem.sucesso');
+        return view('series.index')->with('series', $series)->with('mensagemSucesso',$mensagemSucesso);
+
     }
 
     /**
@@ -42,7 +45,8 @@ class SeriesController extends Controller
         //$nomeSerie = $request->input('nome');
         //dd($request->all())
 
-        Serie::create($request->all()); 
+        $serie = Serie::create($request->all()); 
+        $request->session()->flash('mensagem.sucesso', "Série '{$serie->name}' adicionada com sucesso!");
         //método create() com array associativa    
    
         // $serie= new Serie();
@@ -93,13 +97,17 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Serie $series, Request $request)
     {
-        //dd($request->route());
-        Serie::destroy($request->series);
+        $series->delete();
+        //dd($series);
         /* series é o ID da serie que segue o padrão de rota (Actions Handled By Resource Controller)
         singular de series em inglês é series */
-       //dd($request->series);
+        //dd($request->series);
+        //dd($request->route());
+
+        $request->session()->flash('mensagem.sucesso', "Série '{$series->name}' removida com sucesso");
+
 
        return redirect()->route('series.index');
     }
