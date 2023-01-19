@@ -43,7 +43,11 @@ class SeriesController extends Controller
     public function store(Request $request)
     {
         //$nomeSerie = $request->input('nome');
-        //dd($request->all())
+        //dd($request->nome);
+
+        $request->validate([
+            'name' => 'required|min:3'
+        ]);
 
         $serie = Serie::create($request->all()); 
         //método create() com array associativa    
