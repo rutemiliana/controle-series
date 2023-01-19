@@ -17,6 +17,8 @@ PHP v8.1.2
 12. php artisan make:migration create_series_table
 13. php artisan migrate
 14. php artisan make:request SeriesFormRequest
+15. php artisan make:model Season -m
+16. php artisan make:model Episode -m
 
 
 
