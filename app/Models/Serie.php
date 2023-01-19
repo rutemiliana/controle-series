@@ -18,7 +18,8 @@ class Serie extends Model
     {
         //$serie->temporadas
         // 1 serie tem muitas temporadas(season)
-        return $this->hasMany(Season::class);
+        return $this->hasMany(Season::class, 'series_id', 'id');
+                            // tabela , foreignkey (series_id da tabela season), localkey(id da tabela serie)
     }
 
 }
