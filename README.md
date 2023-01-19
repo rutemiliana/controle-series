@@ -16,6 +16,7 @@ PHP v8.1.2
 11. npm run mix 
 12. php artisan make:migration create_series_table
 13. php artisan migrate
+14. php artisan make:request SeriesFormRequest
 
 
 

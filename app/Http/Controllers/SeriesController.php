@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\DB;
 use App\Models\Serie;
+use App\Http\Requests\SeriesFormRequest;
 
 
 class SeriesController extends Controller
@@ -40,14 +40,10 @@ class SeriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SeriesFormRequest $request)
     {
         //$nomeSerie = $request->input('nome');
         //dd($request->nome);
-
-        $request->validate([
-            'name' => 'required|min:3'
-        ]);
 
         $serie = Serie::create($request->all()); 
         //método create() com array associativa    
@@ -92,7 +88,7 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Serie $series, Request $request)
+    public function update(Serie $series, SeriesFormRequest $request)
     {
         
         //fill faz os filtros dos campos que podem ser alterados(definidos na model Serie)
