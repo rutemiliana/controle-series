@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Season;
 
-class Serie extends Model
+class Series extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class Serie extends Model
     //protected $with= ['temporadas'];
 
 
-    public function temporadas()
+    public function season()
     {
         //$serie->temporadas
         // 1 serie tem muitas temporadas(season)
