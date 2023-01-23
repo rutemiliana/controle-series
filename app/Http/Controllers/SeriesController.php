@@ -18,7 +18,7 @@ class SeriesController extends Controller
      */
     public function index(Request $request)
     {
-        $series = Serie::query()->orderBy('name')->get();
+        $series = Serie::all();
         $mensagemSucesso = session('mensagem.sucesso');
         return view('series.index')->with('series', $series)->with('mensagemSucesso',$mensagemSucesso);
 
@@ -80,7 +80,7 @@ class SeriesController extends Controller
         $series->temporadas acessa a propriedade, logo, acessa uma coleção coleção
         $series->temporadas() acessa o relacionamento, uma query builder com possibilidade de filtro
         */
-        dd($series->temporadas());
+       // dd($series->temporadas());
 
        
        return view('series.edit')->with('series', $series);
