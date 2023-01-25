@@ -76,11 +76,11 @@ class SeriesController extends Controller
      */
     public function edit(Serie $series)
     {
-        /*dd($series);
+       /* dd($series);
         $series->temporadas acessa a propriedade, logo, acessa uma coleção coleção
         $series->temporadas() acessa o relacionamento, uma query builder com possibilidade de filtro
         */
-        dd($series->temporadas());
+       // dd($series->temporadas());
 
        
        return view('series.edit')->with('series', $series);
