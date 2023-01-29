@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Series;
+use App\Models\Season;
+use App\Models\Episode;
 use App\Http\Requests\SeriesFormRequest;
 
 
@@ -47,18 +49,28 @@ class SeriesController extends Controller
 
         $serie = Series::create($request->all()); 
         //método create() com array associativa
-        
+        $seasons = [];
         for($i = 1; $i <= $request->seasonsQty; $i++){
-            $season = $serie->seasons()->create([
+            $seasons[] = [
+                'series_id'=> $serie->id,
                 'number' => $i,
-            ]);
-
+            ];
+        };
+        
+        
+        Season::insert($seasons);
+        
+        $episodes = [];
+        foreach($serie->seasons as $season){
             for($j = 1; $j <= $request->episodesPerSeason; $j++){
-                $season->episodes()->create([
-                    'number' => $j,
-                ]);
+                $episodes[] = [
+                    'season_id' => $season->id,
+                    'number' => $j
+                ];
             }            
         }
+
+        Episode::insert($episodes);
 
    
         // $serie= new Serie();
