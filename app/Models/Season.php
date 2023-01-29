@@ -9,6 +9,7 @@ use App\Models\App\Serie;
 class Season extends Model
 {
     use HasFactory;
+    protected $fillable = ['number'];
 
     public function series()
     {

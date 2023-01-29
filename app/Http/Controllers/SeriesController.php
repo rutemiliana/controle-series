@@ -43,10 +43,23 @@ class SeriesController extends Controller
     public function store(SeriesFormRequest $request)
     {
         //$nomeSerie = $request->input('nome');
-        //dd($request->nome);
+       //dd($request->all());
 
         $serie = Series::create($request->all()); 
-        //método create() com array associativa    
+        //método create() com array associativa
+        
+        for($i = 1; $i <= $request->seasonsQty; $i++){
+            $season = $serie->seasons()->create([
+                'number' => $i,
+            ]);
+
+            for($j = 1; $j <= $request->episodesPerSeason; $j++){
+                $season->episodes()->create([
+                    'number' => $j,
+                ]);
+            }            
+        }
+
    
         // $serie= new Serie();
         // $serie->name= $nomeSerie;

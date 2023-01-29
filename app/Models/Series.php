@@ -15,7 +15,7 @@ class Series extends Model
     //protected $with= ['temporadas'];
 
 
-    public function season()
+    public function seasons()
     {
         //$serie->temporadas
         // 1 serie tem muitas temporadas(season)
