@@ -20,7 +20,7 @@ PHP v8.1.2
 15. php artisan make:model Season -m
 16. php artisan make:model Episode -m
 17. composer require barryvdh/laravel-debugbar --dev
-
+18. php artisan make:controller SeasonsController
 
 
 # About clone, organize and install to start local
